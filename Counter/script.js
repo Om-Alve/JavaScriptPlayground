@@ -1,9 +1,9 @@
 let value = 0;
-value_display = document.getElementById('value');
+const value_display = document.getElementById('value');
 value_display.textContent = value
-increase = document.getElementById('increment');
-decrease = document.getElementById('decrement');
-reset = document.getElementById('reset');
+const increase = document.getElementById('increment');
+const decrease = document.getElementById('decrement');
+const reset = document.getElementById('reset');
 increase.onclick = function(){
     value += 1;
     value_display.textContent = value;
