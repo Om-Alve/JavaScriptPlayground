@@ -38,6 +38,37 @@
 
 // Promises
 
+// function cleanKitchen(){
+//     return new Promise((resolve,reject)=>{
+//         setTimeout(()=>resolve('Cleaned the kitchen'),4000);
+//     })
+// }
+
+// function takeouttrash(){
+//     return new Promise((resolve,reject) =>{
+//         setTimeout(() => {
+//             resolve('Took out the trash');
+//         }, 2000);
+//     }
+//     )
+// }
+
+// function sitbackandrelax(){
+//     return new Promise((resolve,reject) =>{
+//         setTimeout(()=>resolve('Sitting back and Relaxing'),2000);
+//     }
+//     )
+// }
+
+// cleanKitchen().then(value => {console.log(value); return takeouttrash()})
+//             .then(value => {console.log(value); return sitbackandrelax()})
+//             .then(value => {console.log(value);return console.log('All Tasks Done!')});
+
+
+
+// Async Await
+
+
 function cleanKitchen(){
     return new Promise((resolve,reject)=>{
         setTimeout(()=>resolve('Cleaned the kitchen'),4000);
@@ -60,6 +91,14 @@ function sitbackandrelax(){
     )
 }
 
-cleanKitchen().then(value => {console.log(value); return takeouttrash()})
-            .then(value => {console.log(value); return sitbackandrelax()})
-            .then(value => {console.log(value);return console.log('All Tasks Done!')});
+async function doTasks(){
+    const cleanKitchenRes = await cleanKitchen();
+    console.log(cleanKitchenRes);
+    const takeouttrashRes = await takeouttrash();
+    console.log(takeouttrashRes);
+    const sitbackandrelaxRes = await sitbackandrelax();
+    console.log(sitbackandrelaxRes);
+    console.log('All tasks done!');
+}
+
+doTasks();
