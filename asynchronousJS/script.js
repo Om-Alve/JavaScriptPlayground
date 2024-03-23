@@ -6,29 +6,60 @@
 
 // Callbacks
 
-function cleanKitchen(callback) {
-  setTimeout(() => {
-    console.log("cleaned the kitchen");
-    callback();
-  }, 4000);
-}
-function takeouttrash(callback) {
-  setTimeout(() => {
-    console.log("took out the trash");
-    callback();
-  }, 2000);
-}
-function sitbackandrelax(callback) {
-  setTimeout(() => {
-    console.log("relaxing");
-    callback();
-  }, 3000);
+// function cleanKitchen(callback) {
+//   setTimeout(() => {
+//     console.log("cleaned the kitchen");
+//     callback();
+//   }, 4000);
+// }
+// function takeouttrash(callback) {
+//   setTimeout(() => {
+//     console.log("took out the trash");
+//     callback();
+//   }, 2000);
+// }
+// function sitbackandrelax(callback) {
+//   setTimeout(() => {
+//     console.log("relaxing");
+//     callback();
+//   }, 3000);
+// }
+
+// cleanKitchen(() => {
+//   takeouttrash(() => {
+//     sitbackandrelax(() => {
+//       console.log("all tasks done!");
+//     });
+//   });
+// });
+
+
+
+
+// Promises
+
+function cleanKitchen(){
+    return new Promise((resolve,reject)=>{
+        setTimeout(()=>resolve('Cleaned the kitchen'),4000);
+    })
 }
 
-cleanKitchen(() => {
-  takeouttrash(() => {
-    sitbackandrelax(() => {
-      console.log("all tasks done!");
-    });
-  });
-});
+function takeouttrash(){
+    return new Promise((resolve,reject) =>{
+        setTimeout(() => {
+            resolve('Took out the trash');
+        }, 2000);
+    }
+    )
+}
+
+function sitbackandrelax(){
+    return new Promise((resolve,reject) =>{
+        setTimeout(()=>resolve('Sitting back and Relaxing'),2000);
+    }
+    )
+}
+
+cleanKitchen().then(value => {console.log(value); return takeouttrash()})
+            .then(value => {console.log(value); return sitbackandrelax()})
+            .then(value => {console.log(value);return console.log('All Tasks Done!')});
