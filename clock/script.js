@@ -9,4 +9,4 @@ function updateTime(){
     time.textContent = `${hours} : ${minutes} : ${seconds} ${merdian}`;
 }
 
-setInterval(updateTime,100);
+setInterval(updateTime,1000);
