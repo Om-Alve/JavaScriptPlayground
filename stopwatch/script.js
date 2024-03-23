@@ -18,6 +18,7 @@ start.onclick=function() {
 stop.onclick = function(){
     if(hasStarted){
         clearInterval(id);
+        elapsed = Date.now() - begin;
         hasStarted = false;
     }
 }
@@ -25,6 +26,7 @@ stop.onclick = function(){
 reset.onclick = function(){
     elapsed=0;
     clearInterval(id);
+    hasStarted = false;
     time.textContent = `00 : 00 : 00 : 00`;
 }
 
